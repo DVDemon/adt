@@ -1,0 +1,93 @@
+version: '3.3'
+services:
+  neo4j-node: 
+    image: neo4j:5-community
+    container_name: neo4j-node
+    restart: unless-stopped
+    ports:
+      - "7473:7473"
+      - "7474:7474"
+      - "7687:7687"
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 2g
+    environment: 
+      # Raise memory limits
+      - NEO4J_server.memory.pagecache.size=1G
+      - NEO4J_server.memory.heap.max_size=1G
+    volumes:
+      - neo4j_conf:/conf
+      - neo4j_data:/data
+      - neo4j_import:/import
+      - neo4j_logs:/logs
+      - neo4j_plugins:/plugins
+    networks:
+      - adt-network
+  cache:
+    image: redis:6.2-alpine
+    container_name: cache-1
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning 
+    volumes: 
+      - cache:/data
+    networks:
+      - adt-network
+  mongo:
+    image: mongo:5.0
+    container_name: mongo-1
+    ports:
+      - '27017:27017'
+    environment:
+      - MONGO_INITDB_DATABASE=adt
+      #- MONGO_INITDB_ROOT_USERNAME=admin
+      #- MONGO_INITDB_ROOT_PASSWORD=admin
+    volumes:
+      # seeding scripts
+      - mongo-entrypoint:/docker-entrypoint-initdb.d
+      # named volumes
+      - mongodb:/data/db
+      - mongoconfig:/data/configdb
+    networks:
+      - adt-network
+  db-node-ex01:
+    build:
+      context: mariadb
+      dockerfile: Dockerfile
+    container_name: db-node-ex01
+    restart: unless-stopped
+    privileged: true
+    environment:
+      MYSQL_DATABASE: adt
+      MYSQL_USER: adt_user
+      MYSQL_PASSWORD: adt_password
+      MYSQL_ROOT_PASSWORD: '1'
+    command: >
+      --sql-mode='STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'
+      --general-log=ON
+      --log-queries-not-using-indexes=ON
+    networks:
+      - adt-network
+    ports:
+      - 3360:3306
+    volumes:
+      - mysql-data:/var/lib/mysql
+volumes:
+  neo4j_conf:
+  neo4j_data:
+  neo4j_import:
+  neo4j_logs:
+  neo4j_plugins:
+  mongo-entrypoint:
+  mongodb:
+  mongoconfig:
+  cache:
+  mysql-data:
+
+networks:
+  adt-network:
+    driver: "bridge"
+    external: false
