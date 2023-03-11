@@ -4,32 +4,38 @@
 @startuml
 left to right direction
 
-"Scheduler" as scheduler
-"Клиент" as client
+"Import Scheduler" as import_scheduler
+"Export Scheduler" as export_scheduler
 
-rectangle "system Context" as EDT {
-    (Импорт данных о ключевых инициативах) as import_jira
-    (Импорт перечня продуктов) as import_jira_product
-    (Импорт каталога продуктов) as import_cnf_product
-    (Импорт ADR продуктов) as import_adr
-    (Импорт материалов технического комитета продуктов) as import_tk
-    (Импорт архитектуры продуктов) as import_arch
+rectangle "Architecture Digital Twin" as EDT {
+    (UC00:Импорт данных о ключевых инициативах) as import_jira
+    (UC02:Импорт каталога продуктов Confluence) as import_cnf_product
+    (UC03:Импорт ADR продуктов) as import_adr
+    (UC04:Импорт материалов технического комитета продуктов) as import_tk
+    (UC05:Импорт архитектуры продуктов ArchRepo) as import_arch
+    (UC01:Загрузка промежуточных данных в ядро) as load_core
+    (UC06:Экспорт данных о инициативах в Confluence) as export_conf
+    (UC07:Экспорт данных о инициативах в почту) as export_mail
 
-    (Экспорт данных о инициативах в Confluence) as export_conf
-    (Экспорт данных о инициативах в почту) as export_mail
-    (Экспорт данных о динамики создания ADR) as export_adr
 
-    scheduler -- import_jira
-    import_jira_product ...> import_jira : include
+    import_scheduler -u- import_jira
+    import_scheduler -u- import_cnf_product
+    import_scheduler -u- import_adr
+    import_scheduler -u- import_tk
+    import_scheduler -u- import_arch
 
-    scheduler -- import_cnf_product
-    scheduler -- import_adr
-    scheduler -- import_tk
-    scheduler -- import_arch
+    export_scheduler -- export_conf
+    export_scheduler -- export_mail
+    export_scheduler -- export_adr
 
-    client -- export_conf
-    client -- export_mail
-    client -- export_adr
+    import_jira  ..> load_core : precides
+    import_adr ..> load_core: precides
+    import_tk ..> load_core: precides
+    import_arch ..> load_core: precides
+    import_cnf_product ..> load_core : precides
+
+    load_core ..> export_conf : precides
+    load_core ..> export_mail : precides
 }
 @enduml
 ```
