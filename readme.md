@@ -17,3 +17,7 @@
 ### Отчеты
 - отправка отчета на e-mail со статусом по ключевым инициативам
 - публикация отчета в confluence по статусу по ключевым инициативам
+
+
+# TODO
+- попробывать https://www.nebula-graph.io/ (https://github.com/vesoft-inc/nebula-docker-compose/blob/master/docker-compose.yaml)
