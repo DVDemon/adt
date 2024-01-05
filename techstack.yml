@@ -1,7 +1,8 @@
 repo_name: DVDemon/adt
 report_id: 4d6f3b94f8f9bf9050ae3f20c89ed7d5
+version: 0.1
 repo_type: Public
-timestamp: '2023-11-10T07:36:19+00:00'
+timestamp: '2024-01-05T08:57:41+00:00'
 requested_by: DVDemon
 provider: github
 branch: main
@@ -16,6 +17,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/1049/cplusplus.png
+  detection_source_url: https://github.com/DVDemon/adt
   detection_source: Repo Metadata
 - name: Node.js
   description: A platform built on Chrome's JavaScript runtime for easily building
@@ -26,6 +28,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Frameworks (Full Stack)
   image_url: https://img.stackshare.io/service/1011/n1JRsFeB_400x400.png
+  detection_source_url: https://github.com/DVDemon/adt/blob/main/docker/docker-compose.yaml
   detection_source: docker/docker-compose.yaml
   last_updated_by: Дзюба Дмитрий Владимирович
   last_updated_on: 2023-03-09 04:20:58.000000000 Z
@@ -38,6 +41,7 @@ tools:
   category: Data Stores
   sub_category: Message Queue
   image_url: https://img.stackshare.io/service/1063/kazUJooF_400x400.jpg
+  detection_source_url: https://github.com/DVDemon/adt/blob/main/docker/docker-compose.yaml
   detection_source: docker/docker-compose.yaml
   last_updated_by: Дзюба Дмитрий Владимирович
   last_updated_on: 2023-03-11 17:46:24.000000000 Z
@@ -49,17 +53,20 @@ tools:
   category: Data Stores
   sub_category: Databases
   image_url: https://img.stackshare.io/service/1030/leaf-360x360.png
+  detection_source_url: https://github.com/DVDemon/adt/blob/main/docker/docker-compose.yaml
   detection_source: docker/docker-compose.yaml
   last_updated_by: Дзюба Дмитрий Владимирович
   last_updated_on: 2023-03-09 04:20:58.000000000 Z
 - name: Neo4j
   description: The world’s leading Graph Database
   website_url: http://www.neo4j.com/
+  license: GPL-3.0
   open_source: true
   hosted_saas: false
   category: Data Stores
   sub_category: Graph Databases
   image_url: https://img.stackshare.io/service/1482/FbkjM42a.png
+  detection_source_url: https://github.com/DVDemon/adt/blob/main/docker/docker-compose.yaml
   detection_source: docker/docker-compose.yaml
   last_updated_by: Дзюба Дмитрий Владимирович
   last_updated_on: 2023-03-09 04:20:58.000000000 Z
@@ -71,6 +78,7 @@ tools:
   category: Data Stores
   sub_category: Databases
   image_url: https://img.stackshare.io/service/1028/ASOhU5xJ.png
+  detection_source_url: https://github.com/DVDemon/adt/blob/main/docker/docker-compose.yaml
   detection_source: docker/docker-compose.yaml
   last_updated_by: Дзюба Дмитрий Владимирович
   last_updated_on: 2023-03-11 17:46:24.000000000 Z
@@ -83,6 +91,7 @@ tools:
   category: Data Stores
   sub_category: In-Memory Databases
   image_url: https://img.stackshare.io/service/1031/default_cbce472cd134adc6688572f999e9122b9657d4ba.png
+  detection_source_url: https://github.com/DVDemon/adt/blob/main/docker/docker-compose.yaml
   detection_source: docker/docker-compose.yaml
   last_updated_by: Дзюба Дмитрий Владимирович
   last_updated_on: 2023-03-09 04:20:58.000000000 Z
@@ -94,6 +103,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Java Build Tools
   image_url: https://img.stackshare.io/service/2424/0UlUI_y1_400x400.jpg
+  detection_source_url: https://github.com/DVDemon/adt
   detection_source: Repo Metadata
 - name: Git
   description: Fast, scalable, distributed revision control system
@@ -103,6 +113,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Version Control System
   image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/DVDemon/adt
   detection_source: Repo Metadata
 - name: Alpine Linux
   description: Security-oriented, lightweight Linux distribution based on musl libc
@@ -113,6 +124,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Operating Systems
   image_url: https://img.stackshare.io/service/6429/alpine_linux.png
+  detection_source_url: https://github.com/DVDemon/adt/blob/main/docker/docker-compose.yaml
   detection_source: docker/docker-compose.yaml
   last_updated_by: Дзюба Дмитрий Владимирович
   last_updated_on: 2023-03-09 04:20:58.000000000 Z
@@ -123,6 +135,7 @@ tools:
   open_source: false
   hosted_saas: false
   image_url: https://img.stackshare.io/service/3519/3wgIDj3j_normal.png
+  detection_source_url: https://github.com/DVDemon/adt/blob/main/docker/docker-compose.yaml
   detection_source: docker/docker-compose.yaml
   last_updated_by: Дзюба Дмитрий Владимирович
   last_updated_on: 2023-03-09 04:20:58.000000000 Z
